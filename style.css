@@ -1,0 +1,35 @@
+
+.gameBoard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.squares {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+footer {
+    position:absolute;
+    bottom: 0px;
+    right: 5px
+}
+
+.playericon {
+    position: absolute;
+    top: 10%;
+    right: 25%;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 5px;
+    width: 105px;
+    height: 50px;
+}
+
