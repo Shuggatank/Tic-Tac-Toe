@@ -15,6 +15,33 @@
     cursor: pointer;
 }
 
+[XO=X],
+[XO=O] {
+  cursor: default;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+[XO=X]::after {
+  content: '✕';
+  font-size: 175px;
+  
+  
+}
+
+[XO=O]::after {
+  content: '〇';
+  font-weight: bold;
+  font-size: 125px;
+  
+}
+
+.won::after {
+  color: #BD022F;
+}
+
 footer {
     position:absolute;
     bottom: 0px;
@@ -33,3 +60,22 @@ footer {
     height: 50px;
 }
 
+[type=reset] img {
+  
+  height: 50px;
+  width: 50px;
+  
+}
+
+[type=reset] img:hover {
+  animation: rotation 2s linear infinite;
+  
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
