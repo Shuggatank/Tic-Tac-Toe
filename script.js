@@ -1,10 +1,15 @@
-let playerX = [];
-let playerO = [];
+// Declared the global variables
+let playerX = []; // Stores the choices made by player 1 in an array
+let playerO = []; // Stores the choices made by player 2 in an array
 //const player_X = 'X';
 //const player_O = 'O';
-let turnCounter = 1;
+let turnCounter = 1; // The number of current turn. Starts at 1 for modulus logic reasons.
 //let playerOTurn = false;
 //let winCounter = 0;
+
+/* The winning square combinations stored in an array, 
+   which is stored in the array named winningConditions.
+   This is used to check against the player array */
 const winningConditions = [
     // Rows
     ['0', '1', '2'],
@@ -23,87 +28,96 @@ const winningConditions = [
 ];
 // let playerXPoints = 0;
 // let playerOPoints = 0;
+// Used DOM
 
-const gameBoard = document.querySelector('.gameBoard');
-console.log(gameBoard);
-
-const squares = document.querySelectorAll('.squares');
+// Returns all the elements with the id of square and stores them into the variable squares in an array. This will be used for the gameboard logic.
+const squares = document.querySelectorAll(".squares");
 console.log(squares);
 
-const reset = document.querySelector('button[type = reset]');
+// Returns the reset button element with the type of rest.
+const reset = document.querySelector("button[type = reset]");
 console.log(reset);
 
-const playerXIcon = document.querySelector('#playerXicon');
-console.log(playerXIcon);
+// Returns the class of turnMessage used to display player turn
+const turnText = document.querySelector(".turnMessage")
 
-const playerOIcon = document.querySelector('#playerOicon');
-console.log(playerOIcon);
-let turnText = document.querySelector(".turnMessage")
 
+
+//Unused DOM
+// const gameBoard = document.querySelector('.gameBoard');
+// console.log(gameBoard);
+
+
+// const playerXIcon = document.querySelector('#playerXicon');
+// console.log(playerXIcon);
+
+// const playerOIcon = document.querySelector('#playerOicon');
+// console.log(playerOIcon);
+
+// Runs the startGame function when the site is loaded
 window.onload = startGame;
 
-
+// When the startGame function is called it in turn calls two other functions, gameInitializer and resetBoard.
 function startGame() {
-    gameListener();
-    resetGame();
+    gameInitializer();
+    resetBoard();
 }
 
-function gameListener() {
-    for (let i = squares.length -1; i >= 0; i--) {
-        squares[i].addEventListener('click', playerSymbols);
-    }
+// gameInitializer goes through the square array and listen for the click. It passes the index of the clicked square to the playerSymbols function.
+function gameInitializer() {
+    squares.forEach((square) => {square.addEventListener("click", playerSymbols)})
 }
 
-function playerSymbols(event){
-    console.log(event.target.innerHTML.length)
+// Square index is passed to the playerSymbols function
+function playerSymbols(event) {
+    // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
     if (event.target.innerHTML.length === 0){
       if (turnCounter % 2 === 0) {
         playerO.push(event.target.getAttribute("id"));
-        event.target.innerHTML = " ";
-        event.target.setAttribute("XO","O");
-        turnText.innerHTML = "It is X's turn";
+        event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
+        event.target.setAttribute("XO","O"); // This sets a new attribute with the value of O, which is used for CSS styling.
+        turnText.innerHTML = "X's turn";
         turnCounter++;
-        if(check(playerO)){        
-            alert("Congrats player two you win");
+        // Runs a check on player two's array to see if there is a match
+        if(check(playerO)){      
+          turnText.innerHTML = "Player Two Wins!";  
+          let confirmed = confirm("Player Two Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
+          if(confirmed){
             resetBoard();
-            return true;
+          }
         }
       }
       else {
         playerX.push(event.target.getAttribute("id"));
-        event.target.innerHTML = " ";
-        event.target.setAttribute("XO","X");
-        turnText.innerHTML = "It is O's turn";
+        event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
+        event.target.setAttribute("XO","X"); // This sets a new attribute of "xo" with the value of X, which is used for CSS styling.
+        turnText.innerHTML = "O's turn";
         turnCounter++;
+        // Runs a check on player one's array to see if there is a match
         if(check(playerX)){
-            alert("Congrats player one you win");
+          turnText.innerHTML = "Player One Wins!";
+          let confirmed = confirm("Player One Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
+          if(confirmed){
             resetBoard();
-            return true;
           }
+        }
       }
-    // if the counter is greater than or equal to 10, the game is a draw!
+    // If the turnCounter is greater than or equal to 10, then the game is a draw. This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
     if (turnCounter >= 10){
       turnText.innerHTML = "Game Over!";
-      let confirmed = confirm("It's a draw, do you want to play again?");
+      let confirmed = confirm("The game is a draw. Do you want to play again?");
       if(confirmed){
         resetBoard();
       }
     }
    }
   }
-  
-  function resetGame(){
-    reset.addEventListener("click", resetBoard);
-  }
 
+  // The check function checks if the player array values match the winningConditions array values
   function check(array){
     let finalResult = false;
     for(let item of winningConditions){
-    
-      let result = item.every(val => array.indexOf(val) !== -1);
-      // console.log(array)
-      // console.log(item)
-      // console.log(res)
+      let result = item.every(arr => array.indexOf(arr) !== -1);
       if(result){
         finalResult = true;
         break;
@@ -112,15 +126,15 @@ function playerSymbols(event){
     return finalResult;
   }
 
-  function resetBoard(){
-    for (let i = squares.length - 1; i >= 0; i--) {
-      squares[i].innerHTML="";
-      squares[i].setAttribute("XO","");
-    }
+  function resetBoard() {
+    reset.addEventListener("click", resetBoard);
+    squares.forEach((squares) => {
+      squares.innerHTML= "";
+      squares.setAttribute("XO","");
+    });
     playerO = [];
     playerX = [];
-    //winCounter=0;
     turnCounter = 1;
-    turnText.innerHTML = "It is X's turn";
+    turnText.innerHTML = "X's turn";
   }
 
