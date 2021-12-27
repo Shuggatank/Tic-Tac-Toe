@@ -97,7 +97,7 @@ function playerSymbols(event) {
       if(check(playerO)){      
         turnText.innerHTML = "Player Two Wins!";
         playerOPoints++;  
-        popluateStorage();
+        setGameData();
         playerOScore.innerHTML = "O: " + playerOPoints;
         alert("Player Two Wins!");
         resetBoard();
@@ -113,7 +113,7 @@ function playerSymbols(event) {
       if(check(playerX)){
         turnText.innerHTML = "Player One Wins!";
         playerXPoints++;
-        popluateStorage();
+        setGameData();
         playerXScore.innerHTML = "X: " + playerXPoints;
         alert("Player One Wins!");
         resetBoard();
@@ -123,7 +123,7 @@ function playerSymbols(event) {
   if (turnCounter >= 10){
     turnText.innerHTML = "Game Over!";
     tiePoints++;
-    popluateStorage();
+    setGameData();
     tieScore.innerHTML = "Tie: " + tiePoints;
     let confirmed = confirm("The game is a draw. Do you want to play again?");
     if(confirmed){
@@ -167,13 +167,11 @@ function resetScore() {
   playerOScore.innerHTML = "O: " + playerOPoints;
   playerXScore.innerHTML = "X: " + playerXPoints;
   tieScore.innerHTML = "Tie: " + tiePoints;
-  popluateStorage();
+  setGameData();
 }
 
-
-function popluateStorage() {
+function setGameData() {
   localStorage.setItem('playerxpoints',playerXPoints);
-  console.log(localStorage.getItem('playerxpoints'));
   localStorage.setItem('playeropoints',playerOPoints);
   localStorage.setItem('tiepoints',tiePoints);
 }
@@ -184,5 +182,4 @@ function getGameData() {
   playerOScore.innerHTML = "O: " + playerOPoints;
   playerXScore.innerHTML = "X: " + playerXPoints;
   tieScore.innerHTML = "Tie: " + tiePoints;
-  console.log(playerXPoints);
 }
