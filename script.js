@@ -26,8 +26,9 @@ const winningConditions = [
     ['2', '4', '6']
 
 ];
-// let playerXPoints = 0;
-// let playerOPoints = 0;
+let playerXPoints = 0;
+let playerOPoints = 0;
+let tiePoints = 0;
 // Used DOM
 
 // Returns all the elements with the id of square and stores them into the variable squares in an array. This will be used for the gameboard logic.
@@ -41,6 +42,9 @@ console.log(reset);
 // Returns the class of turnMessage used to display player turn
 const turnText = document.querySelector(".turnMessage")
 
+const resetScoreButton = document.querySelector("#resetScore")
+console.log(resetScoreButton);
+
 
 
 //Unused DOM
@@ -48,93 +52,114 @@ const turnText = document.querySelector(".turnMessage")
 // console.log(gameBoard);
 
 
-// const playerXIcon = document.querySelector('#playerXicon');
-// console.log(playerXIcon);
+const playerXScore = document.querySelector('#playerXscore');
+console.log(playerXScore);
 
-// const playerOIcon = document.querySelector('#playerOicon');
-// console.log(playerOIcon);
+const playerOScore = document.querySelector('#playerOscore');
+console.log(playerOScore);
+
+const tieScore = document.querySelector('#tieScore');
+console.log(tieScore);
 
 // Runs the startGame function when the site is loaded
 window.onload = startGame;
 
 // When the startGame function is called it in turn calls two other functions, gameInitializer and resetBoard.
 function startGame() {
-    gameInitializer();
-    resetBoard();
+  gameInitializer();
+  resetBoard();
+  resetScore()
 }
 
 // gameInitializer goes through the square array and listen for the click. It passes the index of the clicked square to the playerSymbols function.
 function gameInitializer() {
-    squares.forEach((square) => {square.addEventListener("click", playerSymbols)})
+  squares.forEach((square) => {square.addEventListener("click", playerSymbols)})
 }
 
 // Square index is passed to the playerSymbols function
 function playerSymbols(event) {
-    // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
-    if (event.target.innerHTML.length === 0){
-      if (turnCounter % 2 === 0) {
-        playerO.push(event.target.getAttribute("id"));
-        event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
-        event.target.setAttribute("XO","O"); // This sets a new attribute with the value of O, which is used for CSS styling.
-        turnText.innerHTML = "X's turn";
-        turnCounter++;
-        // Runs a check on player two's array to see if there is a match
-        if(check(playerO)){      
-          turnText.innerHTML = "Player Two Wins!";  
-          let confirmed = confirm("Player Two Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
-          if(confirmed){
-            resetBoard();
-          }
+  // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
+  if (event.target.innerHTML.length === 0){
+    if (turnCounter % 2 === 0) {
+      playerO.push(event.target.getAttribute("id"));
+      event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
+      event.target.setAttribute("XO","O"); // This sets a new attribute with the value of O, which is used for CSS styling.
+      turnText.innerHTML = "X's turn";
+      turnCounter++;
+      // Runs a check on player two's array to see if there is a match
+      if(check(playerO)){      
+        turnText.innerHTML = "Player Two Wins!";
+        playerOPoints++;  
+        playerOScore.innerHTML = "O: " + playerOPoints;
+        let confirmed = confirm("Player Two Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
+        if(confirmed){
+          resetBoard();
         }
       }
-      else {
-        playerX.push(event.target.getAttribute("id"));
-        event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
-        event.target.setAttribute("XO","X"); // This sets a new attribute of "xo" with the value of X, which is used for CSS styling.
-        turnText.innerHTML = "O's turn";
-        turnCounter++;
-        // Runs a check on player one's array to see if there is a match
-        if(check(playerX)){
-          turnText.innerHTML = "Player One Wins!";
-          let confirmed = confirm("Player One Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
-          if(confirmed){
-            resetBoard();
-          }
+    }
+    else {
+      playerX.push(event.target.getAttribute("id"));
+      event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
+      event.target.setAttribute("XO","X"); // This sets a new attribute of "xo" with the value of X, which is used for CSS styling.
+      turnText.innerHTML = "O's turn";
+      turnCounter++;
+      // Runs a check on player one's array to see if there is a match
+      if(check(playerX)){
+        turnText.innerHTML = "Player One Wins!";
+        playerXPoints++;
+        console.log(playerXPoints);
+        playerXScore.innerHTML = "X: " + playerXPoints;
+        let confirmed = confirm("Player One Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
+        if(confirmed){
+          resetBoard();
         }
       }
-    // If the turnCounter is greater than or equal to 10, then the game is a draw. This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
-    if (turnCounter >= 10){
-      turnText.innerHTML = "Game Over!";
-      let confirmed = confirm("The game is a draw. Do you want to play again?");
-      if(confirmed){
-        resetBoard();
-      }
     }
-   }
-  }
-
-  // The check function checks if the player array values match the winningConditions array values
-  function check(array){
-    let finalResult = false;
-    for(let item of winningConditions){
-      let result = item.every(arr => array.indexOf(arr) !== -1);
-      if(result){
-        finalResult = true;
-        break;
-      }
+  // If the turnCounter is greater than or equal to 10, then the game is a draw. This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
+  if (turnCounter >= 10){
+    turnText.innerHTML = "Game Over!";
+    tiePoints++;
+    tieScore.innerHTML = "Tie: " + tiePoints;
+    let confirmed = confirm("The game is a draw. Do you want to play again?");
+    if(confirmed){
+      resetBoard();
     }
-    return finalResult;
   }
-
-  function resetBoard() {
-    reset.addEventListener("click", resetBoard);
-    squares.forEach((squares) => {
-      squares.innerHTML= "";
-      squares.setAttribute("XO","");
-    });
-    playerO = [];
-    playerX = [];
-    turnCounter = 1;
-    turnText.innerHTML = "X's turn";
   }
+}
 
+// The check function checks if the player array values match the winningConditions array values
+function check(array){
+  let finalResult = false;
+  for(let item of winningConditions){
+    let result = item.every(arr => array.indexOf(arr) !== -1);
+    if(result){
+      finalResult = true;
+      break;
+    }
+  }
+  return finalResult;
+}
+
+function resetBoard() {
+  reset.addEventListener("click", resetBoard);
+  squares.forEach((squares) => {
+    squares.innerHTML= "";
+    squares.setAttribute("XO","");
+  });
+  playerO = [];
+  playerX = [];
+  turnCounter = 1;
+  turnText.innerHTML = "X's turn";
+}
+
+
+function resetScore() {
+  resetScoreButton.addEventListener("click", resetScore);
+  playerXPoints = 0;
+  playerOPoints = 0;
+  tiePoints = 0;
+  playerOScore.innerHTML = "O: " + playerOPoints;
+  playerXScore.innerHTML = "X: " + playerXPoints;
+  tieScore.innerHTML = "Tie: " + tiePoints;
+}
