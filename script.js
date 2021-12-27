@@ -78,8 +78,6 @@ function startGame() {
 function gameInitializer() {
   squares.forEach((square) => {
     square.addEventListener("click", playerSymbols)
-    square.addEventListener("click", () => {
-      playerSelect.play()})
   })
 }
 
@@ -87,6 +85,7 @@ function gameInitializer() {
 function playerSymbols(event) {
   // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
   if (event.target.innerHTML.length === 0){
+    playerSelect.play();
     if (turnCounter % 2 === 0) {
       playerO.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
