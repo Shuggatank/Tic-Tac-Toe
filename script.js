@@ -71,7 +71,8 @@ window.onload = startGame;
 function startGame() {
   gameInitializer();
   resetBoard();
-  resetScore()
+  //resetScore()
+  getGameData();
 }
 
 // gameInitializer goes through the square array and listen for the click. It passes the index of the clicked square to the playerSymbols function.
@@ -96,6 +97,7 @@ function playerSymbols(event) {
       if(check(playerO)){      
         turnText.innerHTML = "Player Two Wins!";
         playerOPoints++;  
+        popluateStorage();
         playerOScore.innerHTML = "O: " + playerOPoints;
         alert("Player Two Wins!");
         resetBoard();
@@ -111,7 +113,7 @@ function playerSymbols(event) {
       if(check(playerX)){
         turnText.innerHTML = "Player One Wins!";
         playerXPoints++;
-        console.log(playerXPoints);
+        popluateStorage();
         playerXScore.innerHTML = "X: " + playerXPoints;
         alert("Player One Wins!");
         resetBoard();
@@ -121,6 +123,7 @@ function playerSymbols(event) {
   if (turnCounter >= 10){
     turnText.innerHTML = "Game Over!";
     tiePoints++;
+    popluateStorage();
     tieScore.innerHTML = "Tie: " + tiePoints;
     let confirmed = confirm("The game is a draw. Do you want to play again?");
     if(confirmed){
@@ -155,13 +158,31 @@ function resetBoard() {
   turnText.innerHTML = "X's turn";
 }
 
+resetScoreButton.addEventListener("click", resetScore);
 
 function resetScore() {
-  resetScoreButton.addEventListener("click", resetScore);
   playerXPoints = 0;
   playerOPoints = 0;
   tiePoints = 0;
   playerOScore.innerHTML = "O: " + playerOPoints;
   playerXScore.innerHTML = "X: " + playerXPoints;
   tieScore.innerHTML = "Tie: " + tiePoints;
+  popluateStorage();
+}
+
+
+function popluateStorage() {
+  localStorage.setItem('playerxpoints',playerXPoints);
+  console.log(localStorage.getItem('playerxpoints'));
+  localStorage.setItem('playeropoints',playerOPoints);
+  localStorage.setItem('tiepoints',tiePoints);
+}
+function getGameData() {
+  playerXPoints = localStorage.getItem('playerxpoints');
+  playerOPoints = localStorage.getItem('playeropoints');
+  tiePoints = localStorage.getItem('tiepoints');
+  playerOScore.innerHTML = "O: " + playerOPoints;
+  playerXScore.innerHTML = "X: " + playerXPoints;
+  tieScore.innerHTML = "Tie: " + tiePoints;
+  console.log(playerXPoints);
 }
