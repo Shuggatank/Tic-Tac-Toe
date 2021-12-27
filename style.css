@@ -8,7 +8,7 @@ body {
   background-color:rgb(64, 68, 100);
   display: grid;
   grid-template-columns: auto 75px 600px 150px auto;
-  grid-template-rows: 15vh 75px 100vh 100px;
+  grid-template-rows: 15vh 75px 75vh auto;
 }
 
 .gameBoard {
@@ -45,7 +45,7 @@ body {
   color: rgb(219, 218, 218);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   grid-column: 4;
-  grid-row: 2;
+  grid-row: 3;
   text-align: center;
 }
 
@@ -93,8 +93,9 @@ footer {
 
 .playerscore {
     grid-column: 4;
-    grid-row: 3;
+    grid-row: 2;
     justify-self: center;
+    align-self: center;
     border: 1px solid rgb(219, 218, 218);
     border-radius: 5px;
     color: rgb(219, 218, 218);
@@ -159,7 +160,7 @@ footer {
   [type=reset] img { height: 45px; width: 45px; border-radius: 25px;}
   .playerscore {grid-column: 3; grid-row:2;}
   footer {font-size: 12px; grid-column: 3 / span 2; text-align: right;}
-  .turnMessage {font-size: 12px;}
+  .turnMessage {font-size: 12px; grid-row: 2;}
 }
 
 @media screen and (min-width : 360px) and (max-width : 799px)  {
@@ -172,5 +173,5 @@ footer {
   [type=reset] img { height: 45px; width: 45px; border-radius: 25px;}
   footer {font-size: 10px; grid-column: 3 / span 2; text-align: right;}
   .playerscore {grid-column: 3; grid-row:2;}
-  .turnMessage {font-size: 12px;}
+  .turnMessage {font-size: 12px;grid-row: 2;}
 }

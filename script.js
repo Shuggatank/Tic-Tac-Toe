@@ -45,13 +45,6 @@ const turnText = document.querySelector(".turnMessage")
 const resetScoreButton = document.querySelector("#resetScore")
 console.log(resetScoreButton);
 
-
-
-//Unused DOM
-// const gameBoard = document.querySelector('.gameBoard');
-// console.log(gameBoard);
-
-
 const playerXScore = document.querySelector('#playerXscore');
 console.log(playerXScore);
 
@@ -60,6 +53,16 @@ console.log(playerOScore);
 
 const tieScore = document.querySelector('#tieScore');
 console.log(tieScore);
+
+const playerSelect = document.querySelector('#playerSelect');
+console.log(playerSelect);
+
+
+//Unused DOM
+// const gameBoard = document.querySelector('.gameBoard');
+// console.log(gameBoard);
+
+
 
 // Runs the startGame function when the site is loaded
 window.onload = startGame;
@@ -73,7 +76,11 @@ function startGame() {
 
 // gameInitializer goes through the square array and listen for the click. It passes the index of the clicked square to the playerSymbols function.
 function gameInitializer() {
-  squares.forEach((square) => {square.addEventListener("click", playerSymbols)})
+  squares.forEach((square) => {
+    square.addEventListener("click", playerSymbols)
+    square.addEventListener("click", () => {
+      playerSelect.play()})
+  })
 }
 
 // Square index is passed to the playerSymbols function
@@ -91,10 +98,8 @@ function playerSymbols(event) {
         turnText.innerHTML = "Player Two Wins!";
         playerOPoints++;  
         playerOScore.innerHTML = "O: " + playerOPoints;
-        let confirmed = confirm("Player Two Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
-        if(confirmed){
-          resetBoard();
-        }
+        alert("Player Two Wins!");
+        resetBoard();
       }
     }
     else {
@@ -109,10 +114,8 @@ function playerSymbols(event) {
         playerXPoints++;
         console.log(playerXPoints);
         playerXScore.innerHTML = "X: " + playerXPoints;
-        let confirmed = confirm("Player One Wins! Do you want to play again?"); // Gives the player a choice of continuing to play.
-        if(confirmed){
-          resetBoard();
-        }
+        alert("Player One Wins!");
+        resetBoard();
       }
     }
   // If the turnCounter is greater than or equal to 10, then the game is a draw. This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
