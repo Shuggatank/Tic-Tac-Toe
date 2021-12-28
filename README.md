@@ -5,9 +5,9 @@
 
 
 <h3 align="center">Technologies Used</h3>
-<h5 align="center">HTML</h4> 
-<h5 align="center">CSS</h4>
-<h5 align="center">JavaScript</h4>
+<p align="center">HTML</p> 
+<p align="center">CSS</p>
+<p align="center">JavaScript</p>
 
 <br></br>
 <h3>User Story Requirments</h3>
