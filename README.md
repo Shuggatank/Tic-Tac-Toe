@@ -51,7 +51,8 @@
 
 - [ ] Allow 2 players to play online with each other using any means such as WebSockets, Firebase, or other 3rd-party services.
 
-<h3>Wireframe</h3>
+---
+<h3>Process</h3>
 
 ![wireframe image](/README_IMG/wireframe.svg)
 
@@ -114,3 +115,9 @@ Player 2
 
 Again this gave me a rough idea on how a class based code may be layed out. Ultimately I decide to go with a function system. For me it was easier to quickly implement and keep track of the data. I may refactor the code to a class system on a later date.
 
+When I finally started coding I starts with the bare minimums. I made a broilerplate HTML document and created the divs for the game board so I can assign them later to the Javascript code. In CSS I sized the squares for the gameboard and gave it a border so I could see it on the screen while testing. After that I started working on the Javascript code. First, I declared all the variables I might use, since I didn't yet know how I was going to go about certain things like turn tracking I created more variables than I needed at the end. Some did come into use later in the process. 
+
+The next code I created was the DOM section. I was thinking of all the functions the game might have and created sections in the HTML for them and did document queries for grab them for later use. Again, I wasn't 100% sure how or if I was going to use them, but they were there in case I did decide to use them. 
+
+
+There are few things I still need to work on.
