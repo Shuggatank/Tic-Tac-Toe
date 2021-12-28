@@ -8,7 +8,7 @@ body {
   background-color:rgb(64, 68, 100);
   display: grid;
   grid-template-columns: auto 75px 600px 150px auto;
-  grid-template-rows: 15vh 75px 50px 75vh auto;
+  grid-template-rows: 100px 75px 50px 650px auto;
 }
 
 .gameBoard {
@@ -25,6 +25,11 @@ body {
     width: 150px;
     height: 150px;
     cursor: pointer;
+}
+.squares:hover {
+  background-color: rgba(219, 218, 218, 0.3);
+  transition: all .3s ease-in-out;
+  box-shadow: 0 0 4px rgb(204, 204, 204);
 }
 .squares:nth-child(-n + 3) {
   border-top: none;
@@ -61,7 +66,7 @@ body {
   display:flex;
   justify-content: center;
   align-items: center;
-  transition: all .2s ease-in-out;
+  
   
   /* font-size: 150px;
   color: rgb(219, 218, 218);
@@ -101,11 +106,36 @@ body {
   height: 150px;
   width: auto;
   cursor: not-allowed;
+ 
 }
 [XO=p1token2]::after{
   /* content: url(http://127.0.0.1:5500/img/token2.png); */
   display:flex;
   content: url(./img/token2.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p1token3]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token3.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p1token4]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token4.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p1token5]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token5.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
@@ -127,6 +157,30 @@ body {
   width: auto;
   cursor: not-allowed;
 }
+[XO=p2token3]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token3.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p2token4]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token4.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p2token5]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token5.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
 
 footer {
   grid-column: 4;
@@ -135,20 +189,20 @@ footer {
 }
 
 .playerscore {
-    grid-column: 4;
-    grid-row: 2;
-    justify-self: center;
-    align-self: center;
-    border: 1px solid rgb(219, 218, 218);
-    border-radius: 5px;
-    color: rgb(219, 218, 218);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: 2;
-    width: 150px;
-    height: 50px;
+  grid-column: 4;
+  grid-row: 2;
+  justify-self: center;
+  align-self: center;
+  border: 1px solid rgb(219, 218, 218);
+  border-radius: 5px;
+  color: rgb(219, 218, 218);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: 2;
+  width: 150px;
+  height: 50px;
 }
 #playerXscore {
   border: 1px solid rgb(219, 218, 218);

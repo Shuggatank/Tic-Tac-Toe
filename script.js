@@ -4,8 +4,6 @@ let playerO = []; // Stores the choices made by player 2 in an array
 let playerXToken = 'X';
 let playerOToken = 'O';
 let turnCounter = 1; // The number of current turn. Starts at 1 for modulus logic reasons.
-//let playerOTurn = false;
-//let winCounter = 0;
 
 /* The winning square combinations stored in an array, 
    which is stored in the array named winningConditions.
@@ -56,7 +54,14 @@ console.log(player1Tokens);
 const player2Tokens = document.querySelectorAll('.p2token');
 console.log(player2Tokens);
 
+const tokens = document.querySelectorAll('li');
 
+console.log(squares);
+
+for(let spot of squares) {
+  let result = spot.every(arr => square.indexOf(arr) ===0)
+  console.log(result)
+}
 //Unused DOM
 // const gameBoard = document.querySelector('.gameBoard');
 // console.log(gameBoard);
@@ -127,10 +132,8 @@ function playerSymbols(event) {
     tiePoints++;
     setGameData();
     tieScore.innerHTML = "Tie: " + tiePoints;
-    let confirmed = confirm("The game is a draw. Do you want to play again?");
-    if(confirmed){
-      resetBoard();
-    }
+    alert("The game is a draw.");
+    resetBoard();
   }
   }
 }
@@ -193,6 +196,36 @@ function playerTokens() {
   // player1Tokens.forEach((token) => {
   //   token.addEventListener("click", tokenCheck);
   // });
+  // tokens.forEach((token) => {
+  //   token.addEventListener("click", () => {
+  //     console.log(token)
+  //     for(let spot of squares) {
+  //       let result = spot.every(arr => square.innerHTML ===0)
+  //       console.log(result)
+  //       console.log(spot.innerHTML.length === 0);
+  //       if (spot.innerHTML.length === 0) {
+  //         player1Tokens.forEach((token) => {
+  //           token.addEventListener("click", ()=> {
+  //             playerXToken = token.id;
+  //             console.log(playerXToken);
+  //           });
+  //         });
+        
+  //         player2Tokens.forEach((token) => {
+  //           token.addEventListener("click", ()=> {
+  //             playerOToken = token.id;
+  //             console.log(playerOToken);
+  //           });
+  //         });
+  //       }
+        
+  //     }
+  //   })
+  // })
+  // squares.forEach((spot, i) => {
+  //   console.log(spot.innerHTML);
+    
+  // })
 
   player1Tokens.forEach((token) => {
     token.addEventListener("click", ()=> {
