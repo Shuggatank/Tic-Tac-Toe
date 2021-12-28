@@ -212,7 +212,6 @@ li:active {
 }
 
 #player2Token {
-  border: 1px solid rgb(44, 29, 29);
   grid-column: 2;
   grid-row: 1;
   height: 25px;
@@ -247,18 +246,20 @@ li:active {
 @media screen and (min-width: 800px) and (max-width : 960px) {
   body {grid-template-columns: 5vw 60px auto 60px 5vw; grid-template-rows: 10vh 60px 75vh 15px; }
   .squares {width: 100px; height: 100px}
+  .gameBoard { grid-column: 2/span 3;grid-row: 3;}
   [XO=X]::after { font-size: 125px;}
   [XO=O]::after { font-size: 90px;}
   [type=reset] img { height: 45px; width: 45px; border-radius: 25px;}
   .playerscore {grid-column: 3; grid-row:2;}
   footer {font-size: 12px; grid-column: 3 / span 2; text-align: right;}
   .turnMessage {font-size: 12px; grid-row: 2;}
+  .playertokens{display: none;}
 }
 
 @media screen and (min-width : 360px) and (max-width : 799px)  {
   body {grid-template-columns: 2vw 45px auto 50px 2vw; grid-template-rows: 10vh 45px 75vh 15px; }
   .title {font-size: 35px; grid-column: 3;}
-  .gameBoard { grid-column: 2/span 3;}
+  .gameBoard { grid-column: 2/span 3;grid-row: 3;}
   .squares {width: 100px; height: 100px}
   [XO=X]::after { font-size: 125px;}
   [XO=O]::after { font-size: 87px;}
@@ -266,4 +267,5 @@ li:active {
   footer {font-size: 10px; grid-column: 3 / span 2; text-align: right;}
   .playerscore {grid-column: 3; grid-row:2;}
   .turnMessage {font-size: 12px;grid-row: 2;}
+  .playertokens{display: none;}
 }

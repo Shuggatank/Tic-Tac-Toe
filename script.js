@@ -212,11 +212,12 @@ function playerTokens() {
 
 //FIX ME
 /* Need to check a check for the token of the players to see if two of them are trying to select the same one.
-If they are trying to select the same one then disable the one that hasn't been selected.
- Alternatively, disable the token from being selected if one player has already selected it by using the event.target.src attribute*/
-function tokenCheck(event) {
+   If they are trying to select the same one then disable the one that hasn't been selected.
+   Alternatively, disable the token from being selected if one player has already selected it by using the event.target.src attribute
+*/
+//function tokenCheck(event) {
   // console.log(event.target.id);
-  playerXToken  =  event.target.id; 
+  // playerXToken  =  event.target.id; 
   // console.log(playerXToken )
   // X = document.querySelectorAll('[XO=X]')
   // console.log(X)
@@ -224,12 +225,12 @@ function tokenCheck(event) {
   //console.log(X.style.content)
   // let add = document.styleSheets[0].cssRules[13].style;
   // // add.insertRule('content: url('+ event.target.src+')', 0);
-  // tokenInsert = '[XO=X] {';
-  // tokenInsert += 'url('+event.target.src+')';
-  // tokenInsert += '}';
-  // console.log(tokenInsert);
-  // //add.insertRule(tokenInsert, 13);
-  // document.styleSheets[0].insertRule(tokenInsert, 13);
-  // console.log(document.styleSheets[0].cssRules[13].style)
-}
+//   tokenInsert = '[XO=X] {';
+//   tokenInsert += 'content: url('+event.target.src+')';
+//   tokenInsert += '}';
+//   // console.log(tokenInsert);
+//   // //add.insertRule(tokenInsert, 13);
+//   document.styleSheets[0].insertRule(tokenInsert, 13);
+//   console.log(document.styleSheets[0].cssRules[13].style)
+// }
 
