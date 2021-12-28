@@ -15,6 +15,28 @@
         <div id=tieScore>Tie: </div>
         <button id =resetScore>Reset Score</button>
     </div>
+    <div class = playertokens>
+        <div id=player1Token></div>
+        <input type = "hidden" name = "player1Token">
+            <ul class="player1choices">
+                <li class = "p1token" id = "X"">✕</li>
+                <li ><img src ="./img/token1.png" alt="token1" class = "p1token" id="p1token1"/></li>
+                <li ><img src ="./img/token2.png" alt="token2" class = "p1token" id="p1token2"/></li>
+                <li ><img src ="./img/token3.png" alt="token3" class = "p1token" id="p1token3"/></li>
+                <li ><img src ="./img/token4.png" alt="token4" class = "p1token" id="p1token4"/></li>
+                <li ><img src ="./img/token5.png" alt="token5" class = "p1token" id="p1token5"/></li>
+            </ul>
+        <div id="player2Token"></div>
+        <input type = "hidden" name = "player2Token">
+            <ul class="player2choices">
+                <li class = "p2token" id = "O">O</li>
+                <li ><img src ="./img/token1.png" alt="token1" class = "p2token" id="p2token1"/></li>
+                <li ><img src ="./img/token2.png" alt="token2" class = "p2token" id="p2token2"/></li>
+                <li ><img src ="./img/token3.png" alt="token3" class = "p2token" id="p2token3"/></li>
+                <li ><img src ="./img/token4.png" alt="token4" class = "p2token" id="p2token4"/></li>
+                <li ><img src ="./img/token5.png" alt="token5" class = "p2token" id="p2token5"/></li>
+            </ul>
+    </div>
     <button type="reset"><img src="img/reset.png" alt="Reset" /></button>
     <h3 class = "turnMessage">X's turn</h3>
     <audio id=playerSelect src="./sounds/player_selection.wav"></audio>

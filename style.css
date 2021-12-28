@@ -8,11 +8,11 @@ body {
   background-color:rgb(64, 68, 100);
   display: grid;
   grid-template-columns: auto 75px 600px 150px auto;
-  grid-template-rows: 15vh 75px 75vh auto;
+  grid-template-rows: 15vh 75px 50px 75vh auto;
 }
 
 .gameBoard {
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 3;
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -26,8 +26,6 @@ body {
     height: 150px;
     cursor: pointer;
 }
-
-
 .squares:nth-child(-n + 3) {
   border-top: none;
 }
@@ -63,31 +61,76 @@ body {
   display:flex;
   justify-content: center;
   align-items: center;
+  transition: all .2s ease-in-out;
+  
+  /* font-size: 150px;
+  color: rgb(219, 218, 218);
+  cursor: not-allowed; */
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
 [XO=X]::after {
   content: '✕';
+  /* content: url(./img/token1.png); */
   color: rgb(219, 218, 218);
   font-size: 175px;
   cursor: not-allowed;
-  animation-fill-mode: forwards;
+  overflow: hidden;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  line-height: 140px;
 }
 
-[XO=O]::after {
+[XO=O]::after { 
   content: '〇';
   color: rgb(219, 218, 218);
   font-weight: bold;
   font-size: 125px;
   cursor: not-allowed;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  line-height: 150px;
 }
 
-.won::after {
-  color: #BD022F;
+[XO=p1token1]::after{
+  /* content: url(http://127.0.0.1:5500/img/token1.png); */
+  display:flex;
+  content: url(./img/token1.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p1token2]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token2.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+
+[XO=p2token1]::after{
+  /* content: url(http://127.0.0.1:5500/img/token1.png); */
+  display:flex;
+  content: url(./img/token1.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
+}
+[XO=p2token2]::after{
+  /* content: url(http://127.0.0.1:5500/img/token2.png); */
+  display:flex;
+  content: url(./img/token2.png);
+  height: 150px;
+  width: auto;
+  cursor: not-allowed;
 }
 
 footer {
   grid-column: 4;
-  grid-row: 4; 
+  grid-row: 5; 
   color: rgb(219, 218, 218);
 }
 
@@ -116,12 +159,66 @@ footer {
 #tieScore {
   border: 1px solid rgb(219, 218, 218);
 }
-
-
 #resetScore {
   grid-column: 1 / span 3;
   grid-row: 2;
 }
+
+.playertokens{
+  grid-column: 4;
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  /* grid-template-rows:25px 400px; */
+  width:160px;
+  height:75px;
+  border: 1px solid rgb(219, 218, 218);
+  gap: 5px;
+  background-color: rgb(219, 218, 218);
+  border-radius: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* box-shadow: 0 0 2px rgb(204, 204, 204); */
+  /* transition: all .5s ease; */
+  position: relative;
+  font-size: 14px;
+  color: #000000;
+  height: 470px;
+  text-align: center;
+}
+
+li {
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  list-style: none;
+  font-size: 20px;
+  align-content: center;
+}
+li img{
+  padding: 10px;
+  border-top: 1px lighten(#333, 2%) solid;
+  /* height: auto; */
+  overflow: auto;
+  opacity: 1;
+  height: 75px;
+  width: 75px;  
+}
+
+li:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0 0 4px rgb(204, 204, 204);
+}
+li:active {
+  background-color: #e2e2e2;
+}
+
+#player2Token {
+  border: 1px solid rgb(44, 29, 29);
+  grid-column: 2;
+  grid-row: 1;
+  height: 25px;
+  width: 75px;
+}
+
 
 [type=reset] {
   grid-column: 2;
@@ -129,19 +226,14 @@ footer {
   background: rgb(219, 218, 218);
   border-radius: 15px;
   border: none;
-  
 }
-
 [type=reset] img {
   background: rgb(219, 218, 218);
   height: 50px;
   width: 50px;
-  
 }
-
 [type=reset] img:hover {
   animation: rotation 2s linear infinite;
-  
 }
 @keyframes rotation {
   from {
