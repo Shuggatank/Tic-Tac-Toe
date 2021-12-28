@@ -57,3 +57,60 @@
 
 This wireframe was an initial sketch of what I thought the game may look like. It gave me a rough idea on where the different elements might be placed in both desktop and mobile. The final product came out slightly different than the wireframe but it's mostly the same layout.
 
+![win_conditions_image](/README_IMG/winning.png)
+
+Next, I thought about the game and what it would take to win. I drew a game board and assigned each square a number starting with 0 since that's how it would start in code. Then I went through the board and wrote the winning combinations. This would be the basis on which the code was developed around. These numbers were made into an array so it could be compared to player arrays. 
+
+I also thought about the requirements beyond the technical and user story requirements and made a list to help keep track of what I was doing.
+
+- 3x3 grid
+- Display who won
+- Display draw
+- Reset entire game
+- Display player current turn
+- Track clicks made in squares
+- Check if moves are valid/Check if square is taken
+- Update game status
+- Update UI with game changes
+- Repeat until the end of the game
+
+This these few requirements I could track what needed to be done and could make sure I didn't stray away from the core game requirements.
+
+I also gave thought about what the code might look like, for example:
+```
+HTML
+   Create board
+      div board
+         div squares/cells  (each cell has a number)
+         
+         score board
+         
+         player icons
+         
+         reset button
+         
+         X symbol
+         
+         O symbol
+         
+```
+
+This doesn't look like much but it gave me a rough idea of how the HTML may be layed out. I also gave so thought about making game using classes, for example:
+
+```
+Game Logic
+   board
+   score
+   turn
+   winning conditions
+   
+Player 1
+   spaces taken
+   
+Player 2
+   spaces taken
+   
+```
+
+Again this gave me a rough idea on how a class based code may be layed out. Ultimately I decide to go with a function system. For me it was easier to quickly implement and keep track of the data. I may refactor the code to a class system on a later date.
+
