@@ -3,11 +3,14 @@
 <p>The purpose of this project was to create a browser Tic-Tac-Toe game using HTML, CSS, and Javascript. We created this project from nothing into a fully functioning game. We were given a few user stories and technical requirements as well as some extra goals to guide our projects.
 </p>
 
-
+![Screenshot image](/README_IMG/Tic-Tac-Toe.png)
+---
 <h3 align="center">Technologies Used</h3>
 <p align="center">HTML</p> 
 <p align="center">CSS</p>
 <p align="center">JavaScript</p>
+
+---
 
 <br></br>
 <h3>User Story Requirments</h3>
@@ -47,3 +50,10 @@
 <h3>Super Potential Extra Tic Tac Toe Features</h3>
 
 - [ ] Allow 2 players to play online with each other using any means such as WebSockets, Firebase, or other 3rd-party services.
+
+<h3>Wireframe</h3>
+
+![wireframe image](/README_IMG/wireframe.svg)
+
+This wireframe was an initial sketch of what I thought the game may look like. It gave me a rough idea on where the different elements might be placed in both desktop and mobile. The final product came out slightly different than the wireframe but it's mostly the same layout.
+
