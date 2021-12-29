@@ -13,7 +13,7 @@
 ---
 
 <br></br>
-<h3>User Story Requirments</h3>
+<h3>User Story Requirements</h3>
 
    - [x] As a user, I should be able to start a new tic tac toe game
    - [x] As a user, I should be able to click on a square to add X first and then O, and so on
