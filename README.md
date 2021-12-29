@@ -131,8 +131,14 @@ For resetting the board, I made a function that would go through and default all
 
 After completing the user stories, I moved on to the extra features. The first feature I worked on was keeping track of multiple game round. This is where seperated the reset score to it's own function so it doesn't reset with the board reset. I also removed it from the startGame function so doesn't clear every round. I also added a reset score button when the player does want to clear the score board. 
 
+I decided to work on responsive design. This was mainly done is CSS. I created media queries based on screen size. This took me a little while to figure out the sizing. I used the template of the Galaxy S10 as a base. I created rules for the min and max resolution of the screen and created CSS rules for the different elements to work with the screen size. Then I created another media query for bigger screen like tablets and repeated the process.
+
 The next feature I worked on was the localStorage for persistent data storage. This required a bit of research since we never touched on it in class. It turned out to be a bit easier than I initally thought. In the localStorage I stored the player and tie points. I then created a function that retrieves that data and then updates the innerHTML for the score board with the values so the UI displays the score. This function is called with the window loads.
 
 Adding audio was the next thing I worked on. For this I added an audio file in HTML and then used DOM to get access to it and stored it in a variable. The audio file is played after the square check to it would play whenever an empty square was clicked.
 
-There are few things I still need to work on.
+I'm currently working on player tokens, it is way more complex than I originally thought. I have to take into account content replacement in CSS so the symbols can replace the deafult symbol. I also have to create logic so the player can keep choosing tokens as the game is in progress. There is also the issue of the player choosing the same token which would make the game very confusing. I have an idea of comparing the image source this both player tokens come from the same source. 
+
+Beside the player token I still need to work on AI opponent and online play. I also want to work on visual styling such as drop down menu for the tokens and more animations. 
+
+
