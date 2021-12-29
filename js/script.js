@@ -80,6 +80,7 @@ function playerSymbols(event) {
   if (event.target.innerHTML.length === 0){
     playerSelectAudio.play();
     if (turnCounter % 2 === 0) {
+      document.querySelector(".player2choices").style.visibility="hidden";
       playerOChoices.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
       event.target.setAttribute("XO", playerOToken); 
@@ -96,6 +97,7 @@ function playerSymbols(event) {
       }
     }
     else {
+      document.querySelector(".player1choices").style.visibility="hidden";
       playerXChoices.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
       event.target.setAttribute("XO", playerXToken); 
