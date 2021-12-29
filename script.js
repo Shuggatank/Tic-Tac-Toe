@@ -46,7 +46,7 @@ const playerOScore = document.querySelector('#playerOscore');
 
 const tieScore = document.querySelector('#tieScore');
 
-const playerSelect = document.querySelector('#playerSelect');
+const playerSelectAudio = document.querySelector('#playerSelect');
 
 const player1Tokens = document.querySelectorAll('.p1token');
 console.log(player1Tokens);
@@ -58,10 +58,10 @@ const tokens = document.querySelectorAll('li');
 
 console.log(squares);
 
-for(let spot of squares) {
-  let result = spot.every(arr => square.indexOf(arr) ===0)
-  console.log(result)
-}
+// for(let spot of squares) {
+//   let result = spot.every(arr => square.indexOf(arr) ===0)
+//   console.log(result)
+// }
 //Unused DOM
 // const gameBoard = document.querySelector('.gameBoard');
 // console.log(gameBoard);
@@ -75,7 +75,6 @@ window.onload = startGame;
 function startGame() {
   gameInitializer();
   resetBoard();
-  //resetScore()
   getGameData();
   playerTokens();
 }
@@ -91,7 +90,7 @@ function gameInitializer() {
 function playerSymbols(event) {
   // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
   if (event.target.innerHTML.length === 0){
-    playerSelect.play();
+    playerSelectAudio.play();
     if (turnCounter % 2 === 0) {
       playerO.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
