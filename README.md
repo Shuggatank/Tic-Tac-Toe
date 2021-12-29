@@ -141,4 +141,4 @@ I'm currently working on player tokens, it is way more complex than I originally
 
 Beside the player token I still need to work on AI opponent and online play. I also want to work on visual styling such as drop down menu for the tokens and more animations. 
 
-
+If I had to choose a favorite function I would say it would be playerSymbols. That's where all the game magic happens. It plays audio, does scoring, adds to the player array, adds points, set attributes and announces the winner. It's a very hard working function. 
