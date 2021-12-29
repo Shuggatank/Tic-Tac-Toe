@@ -60,6 +60,9 @@ function startGame() {
   resetBoard();
   getGameData();
   playerTokens();
+  if (localStorage.length === 0) {
+    resetScore();
+  }
 
 }
 
