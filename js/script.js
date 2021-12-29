@@ -1,8 +1,8 @@
 // Declared the global variables
 let playerXChoices = [];
 let playerOChoices = []; 
-let playerXToken = 'X';
-let playerOToken = 'O';
+let playerXToken = "X";
+let playerOToken = "O";
 let turnCounter = 1; // The number of current turn. Starts at 1 for modulus logic reasons.
 let playerXPoints = 0;
 let playerOPoints = 0;
@@ -13,23 +13,23 @@ let tiePoints = 0;
    This is used to check against the player array */
 const winningConditions = [
     // Rows
-    ['0', '1', '2'],
-    ['3', '4', '5'],
-    ['6', '7', '8'],
+    ["0", "1", "2"],
+    ["3", "4", "5"],
+    ["6", "7", "8"],
 
     // Columns
-    ['0', '3', '6'],
-    ['1', '4', '7'],
-    ['2', '5', '8'],
+    ["0", "3", "6"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
 
     // Diagonal
-    ['0', '4', '8'],
-    ['2', '4', '6']
+    ["0", "4", "8"],
+    ["2", "4", "6"]
 
 ];
 
 //DOM
-const squares = document.querySelectorAll('.squares');
+const squares = document.querySelectorAll(".squares");
 
 const reset = document.querySelector("button[type = reset]");
 
@@ -37,19 +37,19 @@ const turnText = document.querySelector(".turnMessage")
 
 const resetScoreButton = document.querySelector("#resetScore")
 
-const playerXScore = document.querySelector('#playerXscore');
+const playerXScore = document.querySelector("#playerXscore");
 
-const playerOScore = document.querySelector('#playerOscore');
+const playerOScore = document.querySelector("#playerOscore");
 
-const tieScore = document.querySelector('#tieScore');
+const tieScore = document.querySelector("#tieScore");
 
-const playerSelectAudio = document.querySelector('#playerSelect');
+const playerSelectAudio = document.querySelector("#playerSelect");
 
-const player1Tokens = document.querySelectorAll('.p1token');
+const player1Tokens = document.querySelectorAll(".p1token");
 
-const player2Tokens = document.querySelectorAll('.p2token');
+const player2Tokens = document.querySelectorAll(".p2token");
 
-const tokens = document.querySelectorAll('li');
+const tokens = document.querySelectorAll("li");
 
 
 window.onload = startGame;
@@ -60,6 +60,7 @@ function startGame() {
   resetBoard();
   getGameData();
   playerTokens();
+
 }
 
 // gameInitializer goes through the square array and listen for the click. It passes the index of the clicked square to the playerSymbols function.
@@ -144,6 +145,7 @@ function resetBoard() {
   playerXChoices = [];
   turnCounter = 1;
   turnText.innerHTML = "X's turn";
+  unhideTokens();
 }
 
 resetScoreButton.addEventListener("click", resetScore);
@@ -160,16 +162,16 @@ function resetScore() {
 
 // The setGameData function sets the player data to localStorage so it can persistent even after site reload.
 function setGameData() { 
-  localStorage.setItem('playerxpoints',playerXPoints);
-  localStorage.setItem('playeropoints',playerOPoints);
-  localStorage.setItem('tiepoints',tiePoints);
+  localStorage.setItem("playerxpoints",playerXPoints);
+  localStorage.setItem("playeropoints",playerOPoints);
+  localStorage.setItem("tiepoints",tiePoints);
 }
 
 // The getGameData function returns the player data from localStorage
 function getGameData() {
-  playerXPoints = localStorage.getItem('playerxpoints');
-  playerOPoints = localStorage.getItem('playeropoints');
-  tiePoints = localStorage.getItem('tiepoints');
+  playerXPoints = localStorage.getItem("playerxpoints");
+  playerOPoints = localStorage.getItem("playeropoints");
+  tiePoints = localStorage.getItem("tiepoints");
   playerOScore.innerHTML = "O: " + playerOPoints;
   playerXScore.innerHTML = "X: " + playerXPoints;
   tieScore.innerHTML = "Tie: " + tiePoints;
@@ -179,14 +181,19 @@ function playerTokens() {
   player1Tokens.forEach((token) => {
     token.addEventListener("click", ()=> {
       playerXToken = token.id;
-      console.log(playerXToken);
+      document.querySelector(".player1choices").style.visibility="hidden";
     });
   });
 
   player2Tokens.forEach((token) => {
     token.addEventListener("click", ()=> {
       playerOToken = token.id;
-      console.log(playerOToken);
+      document.querySelector(".player2choices").style.visibility="hidden";
     });
   });
+}
+
+function unhideTokens() {
+  document.querySelector(".player1choices").style.visibility="visible";
+  document.querySelector(".player2choices").style.visibility="visible";
 }
