@@ -203,7 +203,6 @@ footer {
   grid-row: 4;
   display: grid;
   grid-template-columns: repeat(2, auto);
-  /* grid-template-rows:25px 400px; */
   width:160px;
   height:75px;
   border: 1px solid rgb(219, 218, 218);
@@ -227,7 +226,6 @@ li {
 li img{
   padding: 10px;
   border-top: 1px lighten(#333, 2%) solid;
-  /* height: auto; */
   overflow: auto;
   opacity: 1;
   height: 75px;
