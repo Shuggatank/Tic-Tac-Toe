@@ -280,6 +280,7 @@ li:active {
   footer {font-size: 12px; grid-column: 3 / span 2; text-align: right;}
   .turnMessage {font-size: 12px; grid-row: 2;}
   .playertokens{display: none;}
+  [type=reset] img:hover {animation: rotation 2s linear 1;}
 }
 @media screen and (min-width : 360px) and (max-width : 799px)  {
   body {grid-template-columns: 2vw 45px auto 50px 2vw; grid-template-rows: 10vh 45px 75vh 15px; }
@@ -293,4 +294,5 @@ li:active {
   .playerscore {grid-column: 3; grid-row:2;}
   .turnMessage {font-size: 12px;grid-row: 2;}
   .playertokens{display: none;}
+  [type=reset] img:hover {animation: rotation 2s linear 1;}
 }
