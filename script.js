@@ -1,9 +1,12 @@
 // Declared the global variables
-let playerX = []; // Stores the choices made by player 1 in an array
-let playerO = []; // Stores the choices made by player 2 in an array
+let playerXChoices = [];
+let playerOChoices = []; 
 let playerXToken = 'X';
 let playerOToken = 'O';
 let turnCounter = 1; // The number of current turn. Starts at 1 for modulus logic reasons.
+let playerXPoints = 0;
+let playerOPoints = 0;
+let tiePoints = 0;
 
 /* The winning square combinations stored in an array, 
    which is stored in the array named winningConditions.
@@ -24,18 +27,12 @@ const winningConditions = [
     ['2', '4', '6']
 
 ];
-let playerXPoints = 0;
-let playerOPoints = 0;
-let tiePoints = 0;
-// Used DOM
 
-// Returns all the elements with the id of square and stores them into the variable squares in an array. This will be used for the gameboard logic.
+//DOM
 const squares = document.querySelectorAll('.squares');
 
-// Returns the reset button element with the type of rest.
 const reset = document.querySelector("button[type = reset]");
 
-// Returns the class of turnMessage used to display player turn
 const turnText = document.querySelector(".turnMessage")
 
 const resetScoreButton = document.querySelector("#resetScore")
@@ -49,29 +46,15 @@ const tieScore = document.querySelector('#tieScore');
 const playerSelectAudio = document.querySelector('#playerSelect');
 
 const player1Tokens = document.querySelectorAll('.p1token');
-console.log(player1Tokens);
 
 const player2Tokens = document.querySelectorAll('.p2token');
-console.log(player2Tokens);
 
 const tokens = document.querySelectorAll('li');
 
-console.log(squares);
 
-// for(let spot of squares) {
-//   let result = spot.every(arr => square.indexOf(arr) ===0)
-//   console.log(result)
-// }
-//Unused DOM
-// const gameBoard = document.querySelector('.gameBoard');
-// console.log(gameBoard);
-
-
-
-// Runs the startGame function when the site is loaded
 window.onload = startGame;
 
-// When the startGame function is called it in turn calls two other functions, gameInitializer and resetBoard.
+
 function startGame() {
   gameInitializer();
   resetBoard();
@@ -86,19 +69,20 @@ function gameInitializer() {
   })
 }
 
-// Square index is passed to the playerSymbols function
 function playerSymbols(event) {
-  // event.target.innerHTML.length checks whether the square is already taken. If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
+  /* event.target.innerHTML.length checks whether the square is already taken. 
+     If it returns a 0 then the logic continues, if a 1 is returned then the logic does not continue until an empty square is clicked.
+  */
   if (event.target.innerHTML.length === 0){
     playerSelectAudio.play();
     if (turnCounter % 2 === 0) {
-      playerO.push(event.target.getAttribute("id"));
+      playerOChoices.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
-      event.target.setAttribute("XO", playerOToken); // This sets a new attribute with the value of O, which is used for CSS styling.
+      event.target.setAttribute("XO", playerOToken); 
       turnText.innerHTML = "X's turn";
       turnCounter++;
       // Runs a check on player two's array to see if there is a match
-      if(check(playerO)){      
+      if(check(playerOChoices)){      
         turnText.innerHTML = "Player Two Wins!";
         playerOPoints++;  
         setGameData();
@@ -108,15 +92,13 @@ function playerSymbols(event) {
       }
     }
     else {
-      playerX.push(event.target.getAttribute("id"));
+      playerXChoices.push(event.target.getAttribute("id"));
       event.target.innerHTML = " "; // This fills the square with a space so result will come back as 1 and the space can't be clicked again.
-      event.target.setAttribute("XO", playerXToken); // This sets a new attribute of "xo" with the value of X, which is used for CSS styling.
-      console.log(event.target.getAttribute("[XO]"));
-      console.log(playerXToken )
+      event.target.setAttribute("XO", playerXToken); 
       turnText.innerHTML = "O's turn";
       turnCounter++;
       // Runs a check on player one's array to see if there is a match
-      if(check(playerX)){
+      if(check(playerXChoices)){
         turnText.innerHTML = "Player One Wins!";
         playerXPoints++;
         setGameData();
@@ -125,7 +107,9 @@ function playerSymbols(event) {
         resetBoard();
       }
     }
-  // If the turnCounter is greater than or equal to 10, then the game is a draw. This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
+  /* If the turnCounter is greater than or equal to 10, then the game is a draw. 
+     This is done because the game board has 9 spaces so going to 10 will result in a completely full board thus a drawn game.
+  */
   if (turnCounter >= 10){
     turnText.innerHTML = "Game Over!";
     tiePoints++;
@@ -156,8 +140,8 @@ function resetBoard() {
     squares.innerHTML= "";
     squares.setAttribute("XO","");
   });
-  playerO = [];
-  playerX = [];
+  playerOChoices = [];
+  playerXChoices = [];
   turnCounter = 1;
   turnText.innerHTML = "X's turn";
 }
@@ -191,36 +175,84 @@ function getGameData() {
   tieScore.innerHTML = "Tie: " + tiePoints;
 }
 
+  /* FIX ME: This should be checking the condition of truth based on the 
+     the squares array innerHTML length. When going through the array it will give a true or false,
+     true being empty spot, false being a filled spot. Those results are then stored in an array 
+     and used in a every method to determine the over all truth of the array. If the result is true then the
+     player can select a token. If the result is false then the player can't. 
+  */
 function playerTokens() {
-  // player1Tokens.forEach((token) => {
-  //   token.addEventListener("click", tokenCheck);
-  // });
+
+
   // tokens.forEach((token) => {
   //   token.addEventListener("click", () => {
-  //     console.log(token)
-  //     for(let spot of squares) {
-  //       let result = spot.every(arr => square.innerHTML ===0)
-  //       console.log(result)
-  //       console.log(spot.innerHTML.length === 0);
-  //       if (spot.innerHTML.length === 0) {
-  //         player1Tokens.forEach((token) => {
-  //           token.addEventListener("click", ()=> {
-  //             playerXToken = token.id;
-  //             console.log(playerXToken);
-  //           });
+  //     // console.log(token)
+  //     // console.log(squares)
+  //     let trutharr = [];
+  //     squares.forEach((spot) => {
+          
+  //         // console.log(spot)
+  //         trutharr.push(spot.innerHTML.length=== 0)
+  //         // console.log(spot.innerHTML.length === 0)
+  //         // console.log(trutharr)
+  //         // if (spot.innerHTML.length === 0) {
+  //         //   let count = 1;
+  //         //   console.log(count)
+  //         // }
+  //     // console.log(trutharr)
+  //     // let result = trutharr.every((item) => {item === true})
+  //     // console.log(result);
+
+
+
+
+  //         // spot.every(spot.innerHTML.length===0)
+  //     })
+  //     console.log(trutharr)
+  //     let result = trutharr.every((item) => {return item === true})
+  //     console.log(result);
+  //     if (result === true) {
+  //       player1Tokens.forEach((token) => {
+  //         token.addEventListener("click", ()=> {
+  //           playerXToken = token.id;
+  //           console.log(playerXToken);
   //         });
-        
-  //         player2Tokens.forEach((token) => {
-  //           token.addEventListener("click", ()=> {
-  //             playerOToken = token.id;
-  //             console.log(playerOToken);
-  //           });
+  //       });
+      
+  //       player2Tokens.forEach((token) => {
+  //         token.addEventListener("click", ()=> {
+  //           playerOToken = token.id;
+  //           console.log(playerOToken);
   //         });
-  //       }
-        
+  //       });
   //     }
+  //     // squares.every(squares.innerHTML.length === 0)
+  //     // for(let spot of squares) {
+  //       // console.log(squares)
+  //       // let result = spot.every(spot.innerHTML.length === 0)
+  //       // console.log(result)
+  //       // console.log(spot.innerHTML.length === 0);
+  //       // if (spot.innerHTML.length === 0) {
+  //       //   player1Tokens.forEach((token) => {
+  //       //     token.addEventListener("click", ()=> {
+  //       //       playerXToken = token.id;
+  //       //       console.log(playerXToken);
+  //       //     });
+  //       //   });
+        
+  //       //   player2Tokens.forEach((token) => {
+  //       //     token.addEventListener("click", ()=> {
+  //       //       playerOToken = token.id;
+  //       //       console.log(playerOToken);
+  //       //     });
+  //       //   });
+  //       // }
+        
+  //     // }
   //   })
   // })
+
+
   // squares.forEach((spot, i) => {
   //   console.log(spot.innerHTML);
     
