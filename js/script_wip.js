@@ -181,44 +181,29 @@ function getGameData() {
      and used in a every method to determine the over all truth of the array. If the result is true then the
      player can select a token. If the result is false then the player can't. 
   */
+ 
 function playerTokens() {
 
-
+// TODO Check why the if statement isn't working with the result === true value
   // tokens.forEach((token) => {
   //   token.addEventListener("click", () => {
-  //     // console.log(token)
-  //     // console.log(squares)
   //     let trutharr = [];
   //     squares.forEach((spot) => {
-          
-  //         // console.log(spot)
   //         trutharr.push(spot.innerHTML.length=== 0)
-  //         // console.log(spot.innerHTML.length === 0)
-  //         // console.log(trutharr)
-  //         // if (spot.innerHTML.length === 0) {
-  //         //   let count = 1;
-  //         //   console.log(count)
-  //         // }
-  //     // console.log(trutharr)
-  //     // let result = trutharr.every((item) => {item === true})
-  //     // console.log(result);
-
-
-
-
-  //         // spot.every(spot.innerHTML.length===0)
   //     })
   //     console.log(trutharr)
   //     let result = trutharr.every((item) => {return item === true})
   //     console.log(result);
   //     if (result === true) {
+  //       console.log("result works")
   //       player1Tokens.forEach((token) => {
+  //         console.log("token 1 works")
   //         token.addEventListener("click", ()=> {
+  //           console.log("click works")
   //           playerXToken = token.id;
   //           console.log(playerXToken);
   //         });
   //       });
-      
   //       player2Tokens.forEach((token) => {
   //         token.addEventListener("click", ()=> {
   //           playerOToken = token.id;
@@ -226,38 +211,10 @@ function playerTokens() {
   //         });
   //       });
   //     }
-  //     // squares.every(squares.innerHTML.length === 0)
-  //     // for(let spot of squares) {
-  //       // console.log(squares)
-  //       // let result = spot.every(spot.innerHTML.length === 0)
-  //       // console.log(result)
-  //       // console.log(spot.innerHTML.length === 0);
-  //       // if (spot.innerHTML.length === 0) {
-  //       //   player1Tokens.forEach((token) => {
-  //       //     token.addEventListener("click", ()=> {
-  //       //       playerXToken = token.id;
-  //       //       console.log(playerXToken);
-  //       //     });
-  //       //   });
-        
-  //       //   player2Tokens.forEach((token) => {
-  //       //     token.addEventListener("click", ()=> {
-  //       //       playerOToken = token.id;
-  //       //       console.log(playerOToken);
-  //       //     });
-  //       //   });
-  //       // }
-        
-  //     // }
   //   })
   // })
 
-
-  // squares.forEach((spot, i) => {
-  //   console.log(spot.innerHTML);
-    
-  // })
-
+// Working token selection code
   player1Tokens.forEach((token) => {
     token.addEventListener("click", ()=> {
       playerXToken = token.id;
@@ -280,21 +237,11 @@ function playerTokens() {
    Alternatively, disable the token from being selected if one player has already selected it by using the event.target.src attribute
 */
 //function tokenCheck(event) {
-  // console.log(event.target.id);
-  // playerXToken  =  event.target.id; 
-  // console.log(playerXToken )
-  // X = document.querySelectorAll('[XO=X]')
-  // console.log(X)
-  // console.log(document.styleSheets[0].cssRules[13].style)
-  //console.log(X.style.content)
-  // let add = document.styleSheets[0].cssRules[13].style;
-  // // add.insertRule('content: url('+ event.target.src+')', 0);
+
+// playerXToken  =  event.target.id; 
 //   tokenInsert = '[XO=X] {';
 //   tokenInsert += 'content: url('+event.target.src+')';
 //   tokenInsert += '}';
-//   // console.log(tokenInsert);
-//   // //add.insertRule(tokenInsert, 13);
 //   document.styleSheets[0].insertRule(tokenInsert, 13);
 //   console.log(document.styleSheets[0].cssRules[13].style)
 // }
-
