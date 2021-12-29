@@ -91,7 +91,7 @@ body {
 }
 [XO=p1token1]::after{
   display:flex;
-  content: url(./img/token1.png);
+  content: url(../img/token1.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
@@ -99,28 +99,28 @@ body {
 }
 [XO=p1token2]::after{
   display:flex;
-  content: url(./img/token2.png);
+  content: url(../img/token2.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p1token3]::after{
   display:flex;
-  content: url(./img/token3.png);
+  content: url(../img/token3.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p1token4]::after{
   display:flex;
-  content: url(./img/token4.png);
+  content: url(../img/token4.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p1token5]::after{
   display:flex;
-  content: url(./img/token5.png);
+  content: url(../img/token5.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
@@ -128,35 +128,35 @@ body {
 
 [XO=p2token1]::after{
   display:flex;
-  content: url(./img/token1.png);
+  content: url(../img/token1.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p2token2]::after{
   display:flex;
-  content: url(./img/token2.png);
+  content: url(../img/token2.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p2token3]::after{
   display:flex;
-  content: url(./img/token3.png);
+  content: url(../img/token3.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p2token4]::after{
   display:flex;
-  content: url(./img/token4.png);
+  content: url(../img/token4.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
 }
 [XO=p2token5]::after{
   display:flex;
-  content: url(./img/token5.png);
+  content: url(../img/token5.png);
   height: 150px;
   width: auto;
   cursor: not-allowed;
